@@ -1,0 +1,22 @@
+name: String vs Boolean
+
+on:
+  workflow_dispatch:
+    inputs:
+      UseAzurite:
+        description: string-or-bool
+        required: false
+        default: false
+        type: boolean
+jobs:
+  string-v-boolean:  
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Test string true"
+      if: github.event.inputs.UseAzurite == 'true'
+    - run: echo "Test string false"
+      if: github.event.inputs.UseAzurite == 'false'
+    - run: echo "Test boolean true"
+      if: github.event.inputs.UseAzurite == true
+    - run: echo "Test boolean false"
+      if: github.event.inputs.UseAzurite == false
